@@ -14,5 +14,11 @@
             "email": "siad.ardroumli@gmail.com"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+          "MehrAlsNix\\Jacky\\": "src/Jacky",
+          "MehrAlsNix\\Jacky\\Tests\\": "tests/Jacky"
+        }
+    }
 }
