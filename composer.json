@@ -2,7 +2,9 @@
     "name": "mehr-als-nix/jacky",
     "type": "library",
     "require": {
-        "doctrine/annotations": "^1.2"
+        "doctrine/annotations": "^1.2",
+        "doctrine/cache": "^1.4",
+        "janeklb/json-char-input-reader": "^0.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8"
