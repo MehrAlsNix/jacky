@@ -17,13 +17,28 @@
 
 namespace MehrAlsNix\Jacky;
 
-interface FormatSchema
+use janeklb\json\JSONCharInputReader;
+use janeklb\json\JSONChunkProcessor;
+use janeklb\json\JSONChunkProcessorImpl;
+
+class JsonProcessor implements JSONChunkProcessor
 {
-    /**
-     * Method that can be used to get an identifier that can be used for diagnostics
-     * purposes, to indicate what kind of data format this schema is used for: typically
-     * it is a short name of format itself, but it can also contain additional information
-     * in cases where data format supports multiple types of schemas.
-     */
-    public function getSchemaType();
+    public $numProcessed = 0;
+
+    public function process($jsonChunk)
+    {
+        echo "\n\nDecoding ";
+        echo $jsonChunk;
+        echo "\n";
+
+        $obj = json_decode($jsonChunk);
+
+        if ($obj)
+        {
+            $this->numProcessed++;
+        }
+
+        var_dump($obj);
+        echo "\n";
+    }
 }
