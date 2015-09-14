@@ -18,6 +18,7 @@
 namespace MehrAlsNix\Jacky;
 
 use Doctrine\Common\Cache\Cache;
+use MehrAlsNix\Jacky\Databind\JsonMapper;
 
 class JsonFactory
 {
@@ -28,10 +29,10 @@ class JsonFactory
     /** @var Jacky $jacky */
     private static $jacky;
 
-    public static function create($cache = 'ArrayCache', $debug = false)
+    public function __construct($cache = '\Doctrine\Common\Cache\ArrayCache', $debug = false)
     {
         self::$jacky = new Jacky();
-        self::$jacky->setCache($cache);
+        self::$jacky->setCache(new $cache);
         self::$jacky->setDebug($debug);
         self::$jacky->bootstrap();
     }
@@ -42,5 +43,10 @@ class JsonFactory
     public function setCache(Cache $cache)
     {
         $this->cache = $cache;
+    }
+
+    public function getObjectMapper()
+    {
+        return new JsonMapper(self::$jacky->getReader());
     }
 }

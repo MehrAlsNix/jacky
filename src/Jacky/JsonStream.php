@@ -27,7 +27,8 @@ class JsonStream
 
     public function stream_open($path, $mode, $options, &$opened_path)
     {
-        $this->json = file_get_contents($path);
+        $parser = new JsonParser();
+        $this->json = $parser->read(file_get_contents($path));
         $this->position = 0;
 
         return true;

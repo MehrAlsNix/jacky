@@ -15,22 +15,10 @@
  * @link      http://github.com/MehrAlsNix/Jacky
  */
 
-namespace MehrAlsNix\Jacky;
+namespace MehrAlsNix\Jacky\Databind;
 
-class JsonParser
+abstract class ObjectMapper
 {
-    private $reader;
-
-    public function __construct()
-    {
-        $this->reader = new \JsonStreamingParser_Parser();
-    }
-
-    public function read($char)
-    {
-        for ($c = 0; $c < strlen($char) - 1; $c++) {
-            echo $char{$c};
-            $this->reader->readChar($char{$c});
-        }
-    }
+    abstract public function readStream($stream);
+    abstract public function readString($string);
 }

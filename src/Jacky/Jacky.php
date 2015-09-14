@@ -46,6 +46,11 @@ class Jacky
         $this->debug = $flag;
     }
 
+    public function getReader()
+    {
+        return $this->reader;
+    }
+
     public function bootstrap()
     {
         $this->registerAnnotationNamespace();
